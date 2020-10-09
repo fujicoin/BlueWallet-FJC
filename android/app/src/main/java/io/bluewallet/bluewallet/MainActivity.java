@@ -1,4 +1,4 @@
-package io.bluewallet.bluewallet;
+package com.fujicoin.bluewallet;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -16,7 +16,7 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "BlueWallet";
+        return "BlueWallet-FJC";
     }
 
     @Override

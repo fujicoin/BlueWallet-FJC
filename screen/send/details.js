@@ -34,7 +34,7 @@ import Modal from 'react-native-modal';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import BigNumber from 'bignumber.js';
 import RNFS from 'react-native-fs';
-import * as bitcoin from 'bitcoinjs-lib';
+import * as bitcoin from 'fujicoinjs-lib';
 
 import NetworkTransactionFees, { NetworkTransactionFee } from '../../models/networkTransactionFees';
 import { BitcoinUnit, Chain } from '../../models/bitcoinUnits';
@@ -268,14 +268,14 @@ export default class SendDetails extends Component {
   }
 
   /**
-   * TODO: refactor this mess, get rid of regexp, use https://github.com/bitcoinjs/bitcoinjs-lib/issues/890 etc etc
+   * TODO: refactor this mess, get rid of regexp, use https://github.com/bitcoinjs/fujicoinjs-lib/issues/890 etc etc
    *
    * @param data {String} Can be address or `bitcoin:xxxxxxx` uri scheme, or invalid garbage
    */
   processAddressData = data => {
     this.setState({ isLoading: true }, async () => {
       const recipients = this.state.addresses;
-      const dataWithoutSchema = data.replace('bitcoin:', '').replace('BITCOIN:', '');
+      const dataWithoutSchema = data.replace('fujicoin:', '').replace('FUJICOIN:', '');
       if (this.state.fromWallet.isAddressValid(dataWithoutSchema)) {
         recipients[[this.state.recipientsScrollIndex]].address = dataWithoutSchema;
         const units = this.state.units;
@@ -290,8 +290,8 @@ export default class SendDetails extends Component {
         let address = '';
         let options;
         try {
-          if (!data.toLowerCase().startsWith('bitcoin:')) {
-            data = `bitcoin:${data}`;
+          if (!data.toLowerCase().startsWith('fujicoin:')) {
+            data = `fujicoin:${data}`;
           }
           const decoded = DeeplinkSchemaMatch.bip21decode(data);
           address = decoded.address;
@@ -305,7 +305,7 @@ export default class SendDetails extends Component {
           this.setState({ isLoading: false });
         }
         console.log(options);
-        if (btcAddressRx.test(address) || address.indexOf('bc1') === 0 || address.indexOf('BC1') === 0) {
+        if (btcAddressRx.test(address) || address.indexOf('fc1') === 0 || address.indexOf('FC1') === 0) {
           const units = this.state.units;
           units[this.state.recipientsScrollIndex] = BitcoinUnit.BTC; // also resetting current unit to BTC
           recipients[[this.state.recipientsScrollIndex]].address = address;

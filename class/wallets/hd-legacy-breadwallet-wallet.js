@@ -1,7 +1,7 @@
 import bip39 from 'bip39';
 import { HDLegacyP2PKHWallet } from './hd-legacy-p2pkh-wallet';
 const bip32 = require('bip32');
-const bitcoinjs = require('bitcoinjs-lib');
+const bitcoinjs = require('fujicoinjs-lib');
 
 /**
  * HD Wallet (BIP39).
@@ -12,9 +12,9 @@ export class HDLegacyBreadwalletWallet extends HDLegacyP2PKHWallet {
   static typeReadable = 'HD Legacy Breadwallet (P2PKH)';
 
   /**
-   * @see https://github.com/bitcoinjs/bitcoinjs-lib/issues/584
-   * @see https://github.com/bitcoinjs/bitcoinjs-lib/issues/914
-   * @see https://github.com/bitcoinjs/bitcoinjs-lib/issues/997
+   * @see https://github.com/bitcoinjs/fujicoinjs-lib/issues/584
+   * @see https://github.com/bitcoinjs/fujicoinjs-lib/issues/914
+   * @see https://github.com/bitcoinjs/fujicoinjs-lib/issues/997
    */
   getXpub() {
     if (this._xpub) {

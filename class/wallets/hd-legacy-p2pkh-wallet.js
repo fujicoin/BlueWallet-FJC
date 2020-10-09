@@ -1,6 +1,6 @@
 import bip39 from 'bip39';
 import { AbstractHDElectrumWallet } from './abstract-hd-electrum-wallet';
-const bitcoin = require('bitcoinjs-lib');
+const bitcoin = require('fujicoinjs-lib');
 const HDNode = require('bip32');
 const BlueElectrum = require('../../blue_modules/BlueElectrum');
 
@@ -25,7 +25,7 @@ export class HDLegacyP2PKHWallet extends AbstractHDElectrumWallet {
     const seed = bip39.mnemonicToSeed(mnemonic);
     const root = bitcoin.bip32.fromSeed(seed);
 
-    const path = "m/44'/0'/0'";
+    const path = "m/44'/75'/0'";
     const child = root.derivePath(path).neutered();
     this._xpub = child.toBase58();
 
@@ -53,7 +53,7 @@ export class HDLegacyP2PKHWallet extends AbstractHDElectrumWallet {
     const seed = bip39.mnemonicToSeed(mnemonic);
 
     const root = HDNode.fromSeed(seed);
-    const path = `m/44'/0'/0'/${internal ? 1 : 0}/${index}`;
+    const path = `m/44'/75'/0'/${internal ? 1 : 0}/${index}`;
     const child = root.derivePath(path);
 
     return child.toWIF();

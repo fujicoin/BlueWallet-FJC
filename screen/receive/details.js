@@ -333,11 +333,11 @@ const ReceiveDetails = () => {
   const getDisplayAmount = () => {
     switch (customUnit) {
       case BitcoinUnit.BTC:
-        return customAmount + ' BTC';
+        return customAmount + ' FJC';
       case BitcoinUnit.SATS:
-        return currency.satoshiToBTC(customAmount) + ' BTC';
+        return currency.satoshiToBTC(customAmount) + ' FJC';
       case BitcoinUnit.LOCAL_CURRENCY:
-        return currency.fiatToBTC(customAmount) + ' BTC';
+        return currency.fiatToBTC(customAmount) + ' FJC';
     }
     return customAmount + ' ' + customUnit;
   };

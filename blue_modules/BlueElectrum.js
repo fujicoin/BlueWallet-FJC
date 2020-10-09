@@ -1,13 +1,13 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import { Platform } from 'react-native';
 import { AppStorage, LegacyWallet, SegwitBech32Wallet, SegwitP2SHWallet } from '../class';
-const bitcoin = require('bitcoinjs-lib');
+const bitcoin = require('fujicoinjs-lib');
 const ElectrumClient = require('electrum-client');
 const reverse = require('buffer-reverse');
 const BigNumber = require('bignumber.js');
 
 const storageKey = 'ELECTRUM_PEERS';
-const defaultPeer = { host: 'electrum1.bluewallet.io', ssl: '443' };
+const defaultPeer = { host: 'electrumx1.fujicoin.org', ssl: '50002' };
 const hardcodedPeers = [
   // { host: 'noveltybobble.coinjoined.com', tcp: '50001' }, // down
   // { host: 'electrum.be', tcp: '50001' },
@@ -17,11 +17,14 @@ const hardcodedPeers = [
   // { host: 'Bitkoins.nl', tcp: '50001' }, // down
   // { host: 'fullnode.coinkite.com', tcp: '50001' },
   // { host: 'preperfect.eleCTruMioUS.com', tcp: '50001' }, // down
-  { host: 'electrum1.bluewallet.io', ssl: '443' },
-  { host: 'electrum1.bluewallet.io', ssl: '443' }, // 2x weight
-  { host: 'electrum2.bluewallet.io', ssl: '443' },
-  { host: 'electrum3.bluewallet.io', ssl: '443' },
-  { host: 'electrum3.bluewallet.io', ssl: '443' }, // 2x weight
+  // { host: 'electrum1.bluewallet.io', ssl: '443' },
+  // { host: 'electrum1.bluewallet.io', ssl: '443' }, // 2x weight
+  // { host: 'electrum2.bluewallet.io', ssl: '443' },
+  // { host: 'electrum3.bluewallet.io', ssl: '443' },
+  // { host: 'electrum3.bluewallet.io', ssl: '443' }, // 2x weight
+  { host: 'electrumx1.fujicoin.org', ssl: '50002' },
+  { host: 'electrumx2.fujicoin.org', ssl: '50002' },
+  { host: 'electrumx3.fujicoin.org', ssl: '50002' },
 ];
 
 let mainClient: ElectrumClient = false;
@@ -58,7 +61,7 @@ async function connectMain() {
       }
       mainConnected = false;
     };
-    const ver = await mainClient.initElectrum({ client: 'bluewallet', version: '1.4' });
+    const ver = await mainClient.initElectrum({ client: 'bluewallet-fjc', version: '1.4' });
     if (ver && ver[0]) {
       console.log('connected to ', ver);
       serverName = ver[0];
@@ -461,7 +464,7 @@ module.exports.estimateFee = async function (numberOfBlocks) {
   if (!mainClient) throw new Error('Electrum client is not connected');
   numberOfBlocks = numberOfBlocks || 1;
   const coinUnitsPerKilobyte = await mainClient.blockchainEstimatefee(numberOfBlocks);
-  if (coinUnitsPerKilobyte === -1) return 1;
+  if (coinUnitsPerKilobyte === -1) return 10000; //fujicoin min fee (sat/byte)
   return Math.round(new BigNumber(coinUnitsPerKilobyte).dividedBy(1024).multipliedBy(100000000).toNumber());
 };
 

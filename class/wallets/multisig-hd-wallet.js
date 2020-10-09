@@ -6,7 +6,7 @@ const BlueElectrum = require('../../blue_modules/BlueElectrum');
 const coinSelectAccumulative = require('coinselect/accumulative');
 const coinSelectSplit = require('coinselect/split');
 const HDNode = require('bip32');
-const bitcoin = require('bitcoinjs-lib');
+const bitcoin = require('fujicoinjs-lib');
 const createHash = require('create-hash');
 const reverse = require('buffer-reverse');
 
@@ -72,10 +72,10 @@ export class MultisigHDWallet extends AbstractHDElectrumWallet {
   setDerivationPath(path) {
     this._derivationPath = path;
     switch (this._derivationPath) {
-      case "m/48'/0'/0'/2'":
+      case "m/48'/75'/0'/2'":
         this._isNativeSegwit = true;
         break;
-      case "m/48'/0'/0'/1'":
+      case "m/48'/75'/0'/1'":
         this._isWrappedSegwit = true;
         break;
       case "m/45'":

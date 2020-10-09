@@ -1,6 +1,6 @@
 import { HDSegwitBech32Wallet } from '..';
 
-const bitcoin = require('bitcoinjs-lib');
+const bitcoin = require('fujicoinjs-lib');
 const mn = require('electrum-mnemonic');
 const HDNode = require('bip32');
 

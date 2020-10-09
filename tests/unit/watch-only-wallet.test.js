@@ -1,7 +1,7 @@
 /* global it, describe */
 import { WatchOnlyWallet } from '../../class';
 import { decodeUR } from 'bc-ur/dist';
-import { Psbt } from 'bitcoinjs-lib';
+import { Psbt } from 'fujicoinjs-lib';
 const assert = require('assert');
 
 describe('Watch only wallet', () => {

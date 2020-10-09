@@ -1,5 +1,5 @@
 import { HDSegwitBech32Wallet, SegwitBech32Wallet } from './';
-const bitcoin = require('bitcoinjs-lib');
+const bitcoin = require('fujicoinjs-lib');
 const BlueElectrum = require('../blue_modules/BlueElectrum');
 const reverse = require('buffer-reverse');
 const BigNumber = require('bignumber.js');

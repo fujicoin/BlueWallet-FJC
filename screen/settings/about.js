@@ -79,7 +79,7 @@ const About = () => {
   };
 
   const handleOnGithubPress = () => {
-    Linking.openURL('https://github.com/BlueWallet/BlueWallet');
+    Linking.openURL('https://github.com/fujicoin/BlueWallet-FJC');
   };
 
   const handleOnTelegramPress = () => {
@@ -89,11 +89,11 @@ const About = () => {
   const handleOnRatePress = () => {
     const options = {
       AppleAppID: '1376878040',
-      GooglePackageName: 'io.bluewallet.bluewallet',
+      GooglePackageName: 'com.fujicoin.bluewallet',
       preferredAndroidMarket: AndroidMarket.Google,
       preferInApp: true,
       openAppStoreIfInAppFails: true,
-      fallbackPlatformURL: 'https://bluewallet.io',
+      fallbackPlatformURL: 'https://www.fujicoin.org',
     };
     Rate.rate(options, success => {
       if (success) {
@@ -149,7 +149,7 @@ const About = () => {
             <BlueTextCentered>{loc.settings.about_awesome} 👍</BlueTextCentered>
             <BlueSpacing20 />
             <BlueTextCentered>React Native</BlueTextCentered>
-            <BlueTextCentered>bitcoinjs-lib</BlueTextCentered>
+            <BlueTextCentered>fujicoinjs-lib</BlueTextCentered>
             <BlueTextCentered>Nodejs</BlueTextCentered>
             <BlueTextCentered>Electrum server</BlueTextCentered>
           </View>

@@ -2,7 +2,7 @@
 import assert from 'assert';
 import { MultisigHDWallet } from '../../class/';
 import { decodeUR } from 'bc-ur/dist';
-const bitcoin = require('bitcoinjs-lib');
+const bitcoin = require('fujicoinjs-lib');
 
 const mnemonicsCobo =
   'fossil glove maze chest logic shadow document describe awake card bunker lottery sunset athlete giant among logic capable happy sword ridge beef warfare fire';

@@ -4,7 +4,7 @@ import RNFS from 'react-native-fs';
 import url from 'url';
 import { Chain } from '../models/bitcoinUnits';
 import Azteco from './azteco';
-const bitcoin = require('bitcoinjs-lib');
+const bitcoin = require('fujicoinjs-lib');
 const bip21 = require('bip21');
 const BlueApp: AppStorage = require('../BlueApp');
 
@@ -13,7 +13,7 @@ class DeeplinkSchemaMatch {
     if (typeof schemaString !== 'string' || schemaString.length <= 0) return false;
     const lowercaseString = schemaString.trim().toLowerCase();
     return (
-      lowercaseString.startsWith('bitcoin:') ||
+      lowercaseString.startsWith('fujicoin:') ||
       lowercaseString.startsWith('lightning:') ||
       lowercaseString.startsWith('blue:') ||
       lowercaseString.startsWith('bluewallet:') ||
@@ -37,7 +37,7 @@ class DeeplinkSchemaMatch {
       return;
     }
 
-    if (event.url.toLowerCase().startsWith('bluewallet:bitcoin:') || event.url.toLowerCase().startsWith('bluewallet:lightning:')) {
+    if (event.url.toLowerCase().startsWith('bluewallet:fujicoin:') || event.url.toLowerCase().startsWith('bluewallet:lightning:')) {
       event.url = event.url.substring(11);
     }
     if (DeeplinkSchemaMatch.isPossiblySignedPSBTFile(event.url)) {
@@ -249,7 +249,7 @@ class DeeplinkSchemaMatch {
   }
 
   static isBitcoinAddress(address) {
-    address = address.replace('bitcoin:', '').replace('BITCOIN:', '').replace('bitcoin=', '').split('?')[0];
+    address = address.replace('fujicoin:', '').replace('FUJICOIN:', '').replace('fujicoin=', '').split('?')[0];
     let isValidBitcoinAddress = false;
     try {
       bitcoin.address.toOutputScript(address);
@@ -282,15 +282,15 @@ class DeeplinkSchemaMatch {
   }
 
   static isBothBitcoinAndLightning(url) {
-    if (url.includes('lightning') && (url.includes('bitcoin') || url.includes('BITCOIN'))) {
-      const txInfo = url.split(/(bitcoin:|BITCOIN:|lightning:|lightning=|bitcoin=)+/);
+    if (url.includes('lightning') && (url.includes('fujicoin') || url.includes('FUJICOIN'))) {
+      const txInfo = url.split(/(fujicoin:|FUJICOIN:|lightning:|lightning=|fujicoin=)+/);
       let bitcoin;
       let lndInvoice;
       for (const [index, value] of txInfo.entries()) {
         try {
           // Inside try-catch. We dont wan't to  crash in case of an out-of-bounds error.
-          if (value.startsWith('bitcoin') || value.startsWith('BITCOIN')) {
-            bitcoin = `bitcoin:${txInfo[index + 1]}`;
+          if (value.startsWith('fujicoin') || value.startsWith('FUJICOIN')) {
+            bitcoin = `fujicoin:${txInfo[index + 1]}`;
             if (!DeeplinkSchemaMatch.isBitcoinAddress(bitcoin)) {
               bitcoin = false;
               break;
@@ -317,7 +317,7 @@ class DeeplinkSchemaMatch {
   }
 
   static bip21decode(uri) {
-    return bip21.decode(uri.replace('BITCOIN:', 'bitcoin:'));
+    return bip21.decode(uri.replace('FUJICOIN:', 'fujicoin:'));
   }
 
   static bip21encode() {

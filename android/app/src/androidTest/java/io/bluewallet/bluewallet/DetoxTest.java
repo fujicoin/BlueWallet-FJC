@@ -1,4 +1,4 @@
-package io.bluewallet.bluewallet;
+package com.fujicoin.bluewallet;
 
 import com.wix.detox.Detox;
 

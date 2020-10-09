@@ -1,5 +1,5 @@
 import { LegacyWallet } from './legacy-wallet';
-const bitcoin = require('bitcoinjs-lib');
+const bitcoin = require('fujicoinjs-lib');
 
 /**
  * Creates Segwit P2SH Bitcoin address

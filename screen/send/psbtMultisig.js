@@ -14,7 +14,7 @@ import { useNavigation, useRoute, useTheme } from '@react-navigation/native';
 import { BitcoinUnit } from '../../models/bitcoinUnits';
 
 const BlueApp = require('../../BlueApp');
-const bitcoin = require('bitcoinjs-lib');
+const bitcoin = require('fujicoinjs-lib');
 const currency = require('../../blue_modules/currency');
 const fs = require('../../blue_modules/fs');
 const LocalQRCode = require('@remobile/react-native-qrcode-local-image');

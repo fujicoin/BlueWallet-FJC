@@ -644,8 +644,8 @@ const WalletTransactions = () => {
       <StatusBar barStyle="light-content" backgroundColor={WalletGradient.headerColorFor(wallet.type)} />
       {wallet.chain === Chain.ONCHAIN && isHandOffUseEnabled && (
         <Handoff
-          title={`Bitcoin Wallet ${wallet.getLabel()}`}
-          type="io.bluewallet.bluewallet"
+          title={`Fujicoin Wallet ${wallet.getLabel()}`}
+          type="com.fujicoin.bluewallet"
           url={`https://blockpath.com/search/addr?q=${wallet.getXpub()}`}
         />
       )}

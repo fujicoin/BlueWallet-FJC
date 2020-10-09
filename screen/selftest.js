@@ -4,7 +4,7 @@ import { BlueSpacing20, SafeBlueArea, BlueCard, BlueText, BlueNavigationStyle, B
 import PropTypes from 'prop-types';
 import { SegwitP2SHWallet, LegacyWallet, HDSegwitP2SHWallet, HDSegwitBech32Wallet } from '../class';
 import { BlueCurrentTheme } from '../components/themes';
-const bitcoin = require('bitcoinjs-lib');
+const bitcoin = require('fujicoinjs-lib');
 const BlueCrypto = require('react-native-blue-crypto');
 const encryption = require('../blue_modules/encryption');
 const BlueElectrum = require('../blue_modules/BlueElectrum');
@@ -139,7 +139,7 @@ export default class Selftest extends Component {
       const seed = bip39.mnemonicToSeed(mnemonic);
       const root = bitcoin.bip32.fromSeed(seed);
 
-      const path = "m/49'/0'/0'/0/0";
+      const path = "m/49'/75'/0'/0/0";
       const child = root.derivePath(path);
       const address = bitcoin.payments.p2sh({
         redeem: bitcoin.payments.p2wpkh({

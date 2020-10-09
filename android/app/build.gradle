@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "io.bluewallet.bluewallet"
+        applicationId "com.fujicoin.bluewallet"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

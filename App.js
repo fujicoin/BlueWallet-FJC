@@ -35,7 +35,7 @@ if (process.env.NODE_ENV !== 'development') {
   });
 }
 
-const bitcoinModalString = 'Bitcoin address';
+const bitcoinModalString = 'Fujicoin address';
 const lightningModalString = 'Lightning Invoice';
 const BlueApp = require('./BlueApp');
 const EV = require('./blue_modules/events');

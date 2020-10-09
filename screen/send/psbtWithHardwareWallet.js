@@ -41,7 +41,7 @@ const EV = require('../../blue_modules/events');
 const BlueElectrum = require('../../blue_modules/BlueElectrum');
 /** @type {AppStorage} */
 const BlueApp = require('../../BlueApp');
-const bitcoin = require('bitcoinjs-lib');
+const bitcoin = require('fujicoinjs-lib');
 const notifications = require('../../blue_modules/notifications');
 const LocalQRCode = require('@remobile/react-native-qrcode-local-image');
 const { height, width } = Dimensions.get('window');

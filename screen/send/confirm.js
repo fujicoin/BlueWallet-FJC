@@ -25,7 +25,7 @@ const EV = require('../../blue_modules/events');
 const currency = require('../../blue_modules/currency');
 const BlueElectrum = require('../../blue_modules/BlueElectrum');
 const Bignumber = require('bignumber.js');
-const bitcoin = require('bitcoinjs-lib');
+const bitcoin = require('fujicoinjs-lib');
 const notifications = require('../../blue_modules/notifications');
 
 export default class Confirm extends Component {

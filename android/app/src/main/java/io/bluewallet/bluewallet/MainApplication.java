@@ -1,4 +1,4 @@
-package io.bluewallet.bluewallet;
+package com.fujicoin.bluewallet;
 
 import android.app.Application;
 import android.content.Context;

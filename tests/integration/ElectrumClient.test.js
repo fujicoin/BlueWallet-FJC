@@ -1,5 +1,5 @@
 /* global it, describe, jasmine */
-const bitcoin = require('bitcoinjs-lib');
+const bitcoin = require('fujicoinjs-lib');
 global.net = require('net');
 global.tls = require('tls');
 
